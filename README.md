@@ -8,7 +8,7 @@ this addon is focused on plugins like [Essentials](https://essentialsx.net/), [m
 will try add more features soon™ 
 
 
-## download [1.21.1]
+## download [1.21.4]
 
 [Installation guide here](./Installation%20guide.md)
 
