@@ -93,8 +93,34 @@ public class BlazeFarm extends Module {
         .build()
     );
 
+    private final Setting<Boolean> autoFix = sgGeneral.add(new BoolSetting.Builder()
+        .name("AutoFix")
+        .description("Auto Fixes weapon")
+        .defaultValue(true)
+        .build()
+    );
+
+    private final Setting<String> autoFixCommand = sgGeneral.add(new StringSetting.Builder()
+        .name("AutoFix Command")
+        .defaultValue("/fix")
+        .visible(autoFix::get)
+        .build()
+    );
+
+    private final Setting<Integer> autoFixDelay = sgGeneral.add(new IntSetting.Builder()
+        .name("Sell Delay Interval")
+        .description("the delay before selling the blaze rods in minecraft ticks")
+        .defaultValue(5)
+        .visible(autoFix::get)
+        .min(1)
+        .sliderMin(1)
+        .max(80)
+        .sliderMax(80)
+        .build()
+    );
+
     private final List<Entity> targets = new ArrayList<>();
-    private int switchTimer, sellTimer;
+    private int switchTimer, sellTimer, fixTimer;
     public boolean attacking;
 
     public BlazeFarm() {
@@ -126,6 +152,8 @@ public class BlazeFarm extends Module {
         attacking = true;
         if (rotation.get() == RotationMode.Always) Rotations.rotate(Rotations.getYaw(primary), Rotations.getPitch(primary, Target.Body));
         if (delayCheck()) targets.forEach(this::attack);
+
+        if (autoFix.get()) fix();
 
         if (sellTimer <= sellDelay.get()) {
             sellTimer++;
@@ -178,7 +206,16 @@ public class BlazeFarm extends Module {
 
         mc.interactionManager.attackEntity(mc.player, target);
         mc.player.swingHand(Hand.MAIN_HAND);
+    }
 
+    private void fix () {
+        if (autoFixDelay.get() >= fixTimer) {
+            fixTimer++;
+        } else {
+            fixTimer = 0;
+            if (mc.player.getMainHandStack().getDamage() <= 0) return;
+            ChatUtils.sendPlayerMsg(autoFixCommand.get());
+        }
     }
 
     private boolean itemInHand() {

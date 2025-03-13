@@ -24,7 +24,7 @@ public class FlySpeed extends Module {
 
 
     public FlySpeed() {
-        super(Powhax.CATEGORY, "Fly Speed", "Sets the flight speed for abilities");
+        super(Powhax.CATEGORY, "Fly-Speed", "Sets the flight speed for abilities");
     }
 
     @Override
