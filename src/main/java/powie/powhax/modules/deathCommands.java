@@ -76,8 +76,8 @@ public class deathCommands extends Module {
 
     boolean firstCommand = true;
     boolean running = false;
-    int startDelay = 5;
-    int intervalDelay = 5;
+    int startDelay = 0;
+    int intervalDelay = 0;
     private Queue<String> commandQueue = new LinkedList<>();
 
     @EventHandler
