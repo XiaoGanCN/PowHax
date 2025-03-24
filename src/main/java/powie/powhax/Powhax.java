@@ -29,6 +29,7 @@ public class Powhax extends MeteorAddon {
         Modules.get().add(new AutoSell());
         Modules.get().add(new BedrockPrinter());
         Modules.get().add(new BlazeFarm());
+        Modules.get().add(new deathCommands());
         Modules.get().add(new DimensionGodMode());
         Modules.get().add(new FlySpeed());
         Modules.get().add(new SmiteAura());
