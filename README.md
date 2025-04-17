@@ -15,7 +15,8 @@ this addon is focused on plugins like [Essentials](https://essentialsx.net/), [m
 | Auto-Sell | Automatically sells a stack in Tradeview. | [Dynamic Shop](https://www.spigotmc.org/resources/discontinued-dynamicshop-3-1-16-5-1-21.65603) |
 | Bedrock-Printer | Writes the position of bedrock in the nether in a file. meant for seed cracking.| [Nether Bedrock Cracker](https://github.com/19MisterX98/Nether_Bedrock_Cracker) |
 | Fly-Speed | Modifies your fly speed. | Anythint that gives you the flight abilities like[`/fly` in essentialsX](https://essentialsX.net) |
-| Smite-aura| Automatically strikes lighting on specified entities around you. | [`/lighting` in essentialsX](https://essentialsx.net/) |
+| Smite-aura | Automatically strikes lighting on specified entities around you. | [`/lighting` in essentialsX](https://essentialsx.net/) |
+| Death-Commands | Run commands when you die. supports [StarScript](https://meteorclient.com/faq/starscript). |  |
 
 ## download [1.21.4]
 
