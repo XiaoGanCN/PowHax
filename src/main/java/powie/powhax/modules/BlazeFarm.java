@@ -18,7 +18,12 @@ import meteordevelopment.orbit.EventHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.*;
+//import net.minecraft.item.*;
+import net.minecraft.item.AxeItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.MaceItem;
+import net.minecraft.item.TridentItem;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
@@ -165,7 +170,7 @@ public class BlazeFarm extends Module {
             if (600 >= sellDelay.get()) sellTimer = 0; // if sellDelay is lower than 30 seconds, then reset sellTimer(tick)
             return;
         };
-        int prevSlot = mc.player.getInventory().selectedSlot;
+        int prevSlot = mc.player.getInventory().getSelectedSlot();
         InvUtils.swap(item.slot(), false);
         ChatUtils.sendPlayerMsg("/sell handall");
         InvUtils.swap(prevSlot, false);
@@ -222,8 +227,8 @@ public class BlazeFarm extends Module {
 
         return switch (weapon.get()) {
             case Axe -> mc.player.getMainHandStack().getItem() instanceof AxeItem;
-            case Sword -> mc.player.getMainHandStack().getItem() instanceof SwordItem;
-            case Both -> mc.player.getMainHandStack().getItem() instanceof AxeItem || mc.player.getMainHandStack().getItem() instanceof SwordItem;
+            case Sword -> mc.player.getMainHandStack().isIn(ItemTags.SWORDS);
+            case Both -> mc.player.getMainHandStack().getItem() instanceof AxeItem || mc.player.getMainHandStack().isIn(ItemTags.SWORDS);
             default -> true;
         };
     }
