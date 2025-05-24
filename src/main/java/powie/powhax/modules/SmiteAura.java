@@ -212,8 +212,8 @@ public class SmiteAura extends Module {
         if (!canSeeEntityFeet(entity)) return false;
         if (ignoreTamed.get()) {
             if (entity instanceof Tameable tameable
-                && tameable.getOwnerUuid() != null
-                && tameable.getOwnerUuid().equals(mc.player.getUuid())
+                    && tameable.getOwner() != null
+                    && tameable.getOwner().equals(mc.player)
             ) return false;
         }
         if (ignorePassive.get()) {
