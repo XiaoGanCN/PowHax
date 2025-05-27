@@ -18,7 +18,7 @@ this addon is focused on plugins like [Essentials](https://essentialsx.net/), [m
 | Smite-aura | Automatically strikes lighting on specified entities around you. | [`/lighting` in essentialsX](https://essentialsx.net/) |
 | Death-Commands | Run commands when you die. supports [StarScript](https://meteorclient.com/faq/starscript). |  |
 
-## download [1.21.4]
+## download [1.21.5]
 
 
 <h3 align="center"><a href="./Installation%20guide.md">Installation guide here</a></h3>
