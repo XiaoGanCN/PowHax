@@ -61,7 +61,7 @@ public class SmiteAura extends Module {
     );
 
     private final Setting<String> customCommand = sgGeneral.add(new StringSetting.Builder()
-        .name("Custom Command")
+        .name("custom-command")
         .description("The Command to use")
         .defaultValue("/beezooka")
         .visible(() -> command.get() == Command.custom)

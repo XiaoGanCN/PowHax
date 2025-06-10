@@ -32,14 +32,14 @@ public class ArmorBuster extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
 
     private final Setting<Boolean> axeSwitch = sgGeneral.add(new BoolSetting.Builder()
-        .name("Axe switch")
+        .name("axe-switch")
         .description("Switches to your axe in hotbar")
         .defaultValue(true)
         .build()
     );
 
     private final Setting<Boolean> ignoreFriends= sgGeneral.add(new BoolSetting.Builder()
-        .name("Ignore friends")
+        .name("ignore-friends")
         .description("Don't hit ur Meteor friends ok?")
         .defaultValue(true)
         .build()

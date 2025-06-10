@@ -29,6 +29,13 @@ public class deathCommands extends Module {
         .build()
     );
 
+    private final Setting<Boolean> toggleAfterDeath = sgGeneral.add(new BoolSetting.Builder()
+            .name("Toggle After Death")
+            .description("Turns off the module after its activated.")
+            .defaultValue(false)
+            .build()
+    );
+
     private final Setting<Integer> StartDelay = sgGeneral.add(new IntSetting.Builder()
         .name("Start Delay")
         .description("Tick delay before running commands")
@@ -83,14 +90,17 @@ public class deathCommands extends Module {
     @EventHandler
     private void onReceivePacket(PacketEvent.Receive event) {
         if (!(event.packet instanceof net.minecraft.network.packet.s2c.play.PlayerRespawnS2CPacket packet) || running) return;
-        commandQueue = new LinkedList<>();
+
+        commandQueue.clear();
+
         if (SupportStarscript.get()) {
             commandQueue.addAll(commandsStarscript.get());
         } else {
             commandQueue.addAll(commands.get());
         }
         if (commandQueue.isEmpty()){
-            error("Theres no commands to run idiot.");
+            error("Theres no commands to run, idiot.");
+            toggle();
             return;
         }
         running = true;
@@ -119,6 +129,7 @@ public class deathCommands extends Module {
         intervalDelay = 0;
 
         if (!commandQueue.isEmpty()) return;
+        if (toggleAfterDeath.get()) toggle();
         firstCommand = true;
         running = false;
         startDelay = 0;

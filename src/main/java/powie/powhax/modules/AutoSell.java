@@ -14,8 +14,8 @@ import net.minecraft.screen.slot.SlotActionType;
 public class AutoSell extends Module {
     private final SettingGroup sgGeneral = this.settings.getDefaultGroup();
 
-    private final Setting<Integer> SlotDelay = sgGeneral.add(new IntSetting.Builder()
-        .name("Slot Click Delay")
+    private final Setting<Integer> slotDelay = sgGeneral.add(new IntSetting.Builder()
+        .name("slot-click-delay")
         .description("The delay before clicking the slot in minecraft ticks")
         .defaultValue(5)
         .min(0)
@@ -25,11 +25,11 @@ public class AutoSell extends Module {
         .build()
     );
 
-    private final Setting<String> checkContainerName = sgGeneral.add(new StringSetting.Builder()
-        .name("Container Name")
-             .description("Only sells if the name of the container matches")
-            .defaultValue("Tradeview")
-            .build()
+    private final Setting<String> containerName = sgGeneral.add(new StringSetting.Builder()
+        .name("container-name")
+        .description("Only sells if the name of the container matches")
+        .defaultValue("Tradeview")
+        .build()
     );
 
     public AutoSell() {
@@ -43,8 +43,8 @@ public class AutoSell extends Module {
         if (mc.currentScreen == null) return;
         ClientPlayerEntity player = mc.player;
         if (player == null || player.currentScreenHandler == null) return;
-        if (!mc.currentScreen.getTitle().getString().equals(checkContainerName.get()) || player.currentScreenHandler.slots.size() != 54) return; // 63 // 54
-        if (timer <= SlotDelay.get()) {
+        if (!mc.currentScreen.getTitle().getString().equals(containerName.get()) || player.currentScreenHandler.slots.size() != 54) return; // 63 // 54
+        if (timer <= slotDelay.get()) {
             timer++;
             return;
         }

@@ -16,13 +16,15 @@ public class AutoLogin extends Module {
         .name("command")
         .description("The Command to execute")
         .defaultValue("/l")
-        .build());
+        .build()
+    );
 
     private final Setting<String> password = sgGeneral.add(new StringSetting.Builder()
         .name("password")
         .description("The password to log in with")
         .defaultValue("12345")
-        .build());
+        .build()
+    );
 
 
     public AutoLogin() {

@@ -26,13 +26,13 @@ public class BedrockPrinter extends Module {
     SettingGroup sgDefault = settings.getDefaultGroup();
 
     private final Setting<yLevel> searchY = sgDefault.add(new EnumSetting.Builder<BedrockPrinter.yLevel>()
-        .name("Y level")
+        .name("y-level")
         .description("get the bedrock from floor or ceiling?")
         .defaultValue(yLevel.Floor)
         .build());
 
     private final Setting<String> savePath = sgDefault.add(new StringSetting.Builder()
-        .name("Path")
+        .name("path")
         .description("The path to write the positions in")
         .defaultValue("D:/br.txt")
         .build());
