@@ -62,7 +62,7 @@ public class BedrockPrinter extends Module {
             for (int x = c.getPos().getStartX(); x <= c.getPos().getEndX(); x++) {
                 for (int z = c.getPos().getStartZ(); z <= c.getPos().getEndZ(); z++) {
                     BlockPos sPos = new BlockPos(x, searchY.get().getValue(), z);
-                    if (!c.getBlockState(sPos).getBlock().equals(Blocks.BEDROCK)) return;
+                    if (!c.getBlockState(sPos).getBlock().equals(Blocks.BEDROCK)) continue;
                     bedrockPos.add(sPos);
                 }
             }
